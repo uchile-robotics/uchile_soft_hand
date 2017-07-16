@@ -44,10 +44,10 @@
  * @param dir_pin Toggle communication pin.
  * @param reset_pin Pin for reset device.
  */
-class HeadDXL: public DeviceDXL<SERVO_MODEL, SERVO_FIRMWARE, SERVO_MMAP_SIZE>
+class HandDXL: public DeviceDXL<SERVO_MODEL, SERVO_FIRMWARE, SERVO_MMAP_SIZE>
 {
   public:
-    HeadDXL(uint8_t dir_pin, uint8_t reset_pin, uint8_t num_sensors, uint8_t sensors_pins[]):
+    HandDXL(uint8_t dir_pin, uint8_t reset_pin, uint8_t num_sensors, uint8_t sensors_pins[]):
     DeviceDXL(), // Call parent constructor
     dir_pin_(dir_pin),    // Direction pin for RS485
     reset_pin_(reset_pin), // Reset pin
@@ -136,13 +136,13 @@ class HeadDXL: public DeviceDXL<SERVO_MODEL, SERVO_FIRMWARE, SERVO_MMAP_SIZE>
 uint8_t sensors_pins[] = {PIN_TACTIL1, PIN_TACTIL2};
 
 //General device
-HeadDXL head_dxl(PIN_DIR, PIN_RST, NUM_SENSORS, sensors_pins);
-SerialDXL<HeadDXL> serialDxl;
+HandDXL hand_dxl(PIN_DIR, PIN_RST, NUM_SENSORS, sensors_pins);
+SerialDXL<HandDXL> serialDxl;
 
 void setup()
 {
     // Init serial communication using Dynamixel format
-    serialDxl.init(&Serial3 , &head_dxl);
+    serialDxl.init(&Serial3 , &hand_dxl);
 }
 
 void loop()
@@ -153,7 +153,7 @@ void loop()
         serialDxl.process(Serial3.read());
     }
 
-    head_dxl.mmap_.deserialize();
-    head_dxl.update();
-    head_dxl.mmap_.serialize();
+    hand_dxl.mmap_.deserialize();
+    hand_dxl.update();
+    hand_dxl.mmap_.serialize();
 }
