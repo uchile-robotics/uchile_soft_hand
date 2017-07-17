@@ -1,0 +1,7 @@
+hand_controller:
+  controller:
+    module: hand_controller
+    package: uchile_soft_hand
+    type: HandController
+  rate: 5
+  id: 36
