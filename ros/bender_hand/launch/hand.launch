@@ -1,0 +1,16 @@
+<launch>
+
+
+  <group ns="bender">
+    <!-- hand low level config file -->
+    <rosparam file="$(find bender_hand)/config/hand_controller.yaml" command="load"/>
+
+    <!-- Hand low lovel controller spawner -->
+    <node name="hand_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py"
+        args="--manager=r_port_manager
+              --port=dxl_test
+              hand_controller"
+        output="screen"/>
+  </group>
+
+</launch>

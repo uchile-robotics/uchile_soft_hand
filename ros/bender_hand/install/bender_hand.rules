@@ -1,0 +1,5 @@
+# Regla udev para el seteo del nombre de los sensore tactiles del gripper
+# para el robot bender
+
+SUBSYSTEMS=="usb", KERNEL=="ttyACM[0-9]*",  SUBSYSTEM=="tty", ATTRS{manufacturer}=="CCS", ATTRS{product}=="CCS RS232 Demo", SYMLINK+="bender/hand"
+
