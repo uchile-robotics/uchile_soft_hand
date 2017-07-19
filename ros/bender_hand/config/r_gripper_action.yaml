@@ -1,6 +1,6 @@
 r_gripper_controller:
   controller:
-    package: bender_gripper
+    package: bender_hand
     module: gripper_controller
     type: GripperActionController
   gripper_action_node:

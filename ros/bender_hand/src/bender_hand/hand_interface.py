@@ -51,7 +51,7 @@ class HandInterface(object):
         except Exception as e:
             rospy.logwarn('Exception thrown while writing addres %d' % (state_variable))
             # return e
-            return -1
+            return 0
         return result[5]
 
     def change_id(self, new_id):

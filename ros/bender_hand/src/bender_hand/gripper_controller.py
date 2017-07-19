@@ -320,8 +320,8 @@ class GripperActionController():
             self.joint_states_pub.publish(self.joint_state)
 
             # Soft sensors
-            self.left_side_pressure.data = self.hand_interface.read_tactil_sensor(1)
-            self.right_side_pressure.data = self.hand_interface.read_tactil_sensor(2)
+            self.left_side_pressure.data = self.soft_sensor.read_tactil_sensor(1)
+            self.right_side_pressure.data = self.soft_sensor.read_tactil_sensor(2)
 
             # Publish soft sensor data
             self.left_side_pressure_pub.publish(self.left_side_pressure)
