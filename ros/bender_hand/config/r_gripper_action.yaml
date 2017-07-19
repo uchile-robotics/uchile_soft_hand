@@ -1,0 +1,15 @@
+r_gripper_controller:
+  controller:
+    package: bender_gripper
+    module: gripper_controller
+    type: GripperActionController
+  gripper_action_node:
+    goal_tolerance: 0.05
+    max_effort: 0.95
+    effort_tolerance: 0.1
+    stall_timeout: 3.0
+    stalled_velocity_threshold: 0.1
+    state_update_rate: 30
+    joint_states_topic: 'r_gripper/joint_states' # Local namespace
+    soft_sensor:
+      id: 36
