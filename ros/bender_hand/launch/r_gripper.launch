@@ -1,0 +1,28 @@
+<launch>
+
+  <arg name="disble_torque" default="True" />
+  
+  <group ns="bender">
+    <!-- r_gripper low lovel config file -->
+    <rosparam file="$(find bender_gripper)/config/r_gripper_controller.yaml" command="load"/>
+    <!-- r_gripper low lovel controller spawner -->
+    <node name="r_gripper_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py"
+        args="--manager=r_port_manager
+              --port=r_port
+              r_int_finger_controller
+              r_ext_finger_controller"
+        output="screen"/>
+
+    <!-- Gripper Action for r_gripper config file -->
+    <rosparam file="$(find bender_hand)/config/r_gripper_action.yaml" command="load"/>
+    <!-- Spawn Gripper Action for r_gripper -->
+    <node name="r_gripper_controller_spawner_meta" pkg="dynamixel_controllers" type="controller_spawner.py"
+            args="--manager=r_port_manager
+                  --type=meta
+                  r_gripper_controller
+                  r_int_finger_controller
+                  r_ext_finger_controller"
+            output="screen"/>
+  </group>
+
+</launch>
