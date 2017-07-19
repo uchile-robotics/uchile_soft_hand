@@ -68,5 +68,5 @@ class HandController(object):
 
             #publish data
             self.left_side_pressure_pub.publish(self.left_side_pressure)
-            self.right_side_pressure_pub.publish(self.left_side_pressure)
+            self.right_side_pressure_pub.publish(self.right_side_pressure)
             rate.sleep()
